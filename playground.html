@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+    <html lang="en=US">
+        <head>
+            <style>
+                table, th, td {
+                    border: 20px solid red;
+                    border-style: inset;
+                    border-color: aqua;
+                    background-color: antiquewhite;
+                }
+                th, td{
+                    background-color: rebeccapurple;
+                    padding-top: 10px;
+                    padding-bottom: 15px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                }
+
+                table {
+                    border-spacing: 29px;
+                }
+                p {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    background-color: bisque;
+                }
+                .cars {
+                    padding: 50%;
+                    color: aquamarine;
+                }
+                tr {
+                    color: blueviolet;
+                    background-color: antiquewhite;
+                }
+                canvas {
+                    border: 10cm;
+                    background-color: antiquewhite;
+                }
+            </style>
+            <script>
+                function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<img id="drag1" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
+            </script>
+            <p>Count numbers: <output id="result"></output></p>
+<button onclick="startWorker()">Start Worker</button> 
+<button onclick="stopWorker()">Stop Worker</button>
+
+<p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p>
+
+<script>
+var w;
+
+function startWorker() {
+  if(typeof(Worker) !== "undefined") {
+    if(typeof(w) == "undefined") {
+      w = new Worker("demo_workers.js");
+    }
+    w.onmessage = function(event) {
+      document.getElementById("result").innerHTML = event.data;
+    };
+  } else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+  }
+}
+
+function stopWorker() { 
+  w.terminate();
+  w = undefined;
+}
+</script>
+
+        </head>
+        <body>
+            <table style="border: 50px;">
+                <tr>
+                    <th>amongus</th>
+                    <th>ahhhhh</th>
+                </tr>
+                <tr>
+                    <th>amongus</th>
+                    <th>ahhhhh</th>
+                </tr>
+                <tr>
+                    <th>amongus</th>
+                    <th>ahhhhh</th>
+                </tr>
+            </table>
+            
+            <ul style="list-style-type:square;">
+                <li>nigger</li>
+                <li>balls</li>
+            </ul>
+            <ol>
+                <li>white</li>
+                <li>balls</li>
+            </ol>
+            <dl>
+                <dt>coffe</dt>
+                <dd>black hot dick</dd>
+                <dt>milk</dt>
+                <dd>milky nuts</dd>
+            </dl>
+               <strong> <p>gamietai h ploroforikoy??</p></strong>
+            <form>
+                <input type="radio" id="nai" name="nai_gamietai" value="nai">
+                <label for="nai">nai</label><br>
+                <input tpye="radio" id="oxi" name="oxi_gamietai" value="oxi">
+                <label for="oxi">oxi</label><br>
+            </form>
+            <label for="cars">Choose a Car</label>
+            <Select id="cars" name="cars">
+                <option value="BMW">BMW</option>
+                <option value="Volvo">Volvo</option>
+                <option value="Mercedes">Mercedes</option>
+                <option value="Fiat">Fiat</option>
+            </Select>
+            <form>
+                <label for="username">username:</label><br>
+                <input type="text" id="username" name="username"><br>
+                <label for="pwd">Password:</label><br>
+                <input type="password" id="pwd"name="pwd">
+                <input type="submit">
+            </form>
+                <iframe width="1080" height="720"
+                src="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            </iframe
+            <br>
+            <canvas id="MyCanvas" width="200" height="200"></canvas>
+            <script>
+                var c = document.getElementById("MyCanvas");
+                var ctx = c.getContext("2d");
+                ctx.moveTo(0,0);
+                ctx.lineTo(200,100);
+                ctx.stroke();
+
+                var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+            </script>
+        </body>
+        <footer>
+     </footer>
+
+
+ </html>
